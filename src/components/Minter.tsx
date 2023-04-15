@@ -31,7 +31,7 @@ const Minter:React.FC<Props> = ({ smartAccount, provider, acct}) => {
 
     const mintNFT = async () => {
         try {
-            const mintTx = await nftContract.populateTransaction.mint()
+            const mintTx = await nftContract.populateTransaction.safeMint(smartAccount.address)
             const tx1 = {
             to: nftAddress,
             data: mintTx.data,
@@ -49,7 +49,7 @@ const Minter:React.FC<Props> = ({ smartAccount, provider, acct}) => {
 
     const mintMultipleNFT = async () => {
         try {
-            const mintTx = await nftContract.populateTransaction.mint()
+            const mintTx = await nftContract.populateTransaction.safeMint(smartAccount.address)
             const tx1 = {
             to: nftAddress,
             data: mintTx.data,
